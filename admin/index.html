@@ -4,6 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JVA & Co — Content Manager</title>
+  <script>
+    var hash = window.location.hash;
+    if (hash && hash.indexOf('invite_token') > -1) {
+      var token = hash.split('invite_token=')[1];
+      if (token) {
+        window.location.href = 'https://jeremyvineshanthony.com/.netlify/identity#invite_token=' + token;
+      }
+    }
+    if (hash && hash.indexOf('recovery_token') > -1) {
+      var token = hash.split('recovery_token=')[1];
+      if (token) {
+        window.location.href = 'https://jeremyvineshanthony.com/.netlify/identity#recovery_token=' + token;
+      }
+    }
+  </script>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
