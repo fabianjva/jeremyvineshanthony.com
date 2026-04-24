@@ -14,24 +14,30 @@ collections_config:
     output: true
     name: Blog Articles
     icon: notes
-    add_options:
-      - name: Add Blog Post
-        schema: default
-        base_path: blog
+    _enabled_editors:
+      - content
+      - visual
+    schemas:
+      default:
+        path: .cloudcannon/schemas/blog-post.html
 
   gallery:
     path: images/gallery
     output: false
     name: Photo Gallery
     icon: image
-    create:
-      path: images/gallery/{title|slugify}.jpg
+    _enabled_editors:
+      - data
+    schemas:
+      default:
+        path: .cloudcannon/schemas/gallery-item.md
 
-uploads_dir: images
+uploads_dir: images/uploads
 
 _inputs:
   title:
     label: Title
+    type: text
   date:
     label: Date
     type: date
@@ -54,8 +60,7 @@ _inputs:
   image:
     label: Photo
     type: image
+    uploads_dir: images/gallery
   caption:
     label: Caption
-  content:
-    label: Article Content
-    type: markdown
+    type: text
