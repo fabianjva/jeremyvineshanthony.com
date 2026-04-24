@@ -1,17 +1,61 @@
-paths:
-  static: ''
-  uploads: images
-timezone: Asia/Kuala_Lumpur
-markdown:
-  engine: commonmark
-  options: {}
 collections_config:
   pages:
-    path: ''
-    icon: wysiwyg
-  admin:
-    path: admin
-    icon: ad
+    path: ""
+    output: true
+    filter:
+      base: strict
+    include:
+      - index.html
+    name: Pages
+    icon: home
+
   blog:
     path: blog
-    icon: event_available
+    output: true
+    name: Blog Articles
+    icon: notes
+    add_options:
+      - name: Add Blog Post
+        schema: default
+        base_path: blog
+
+  gallery:
+    path: images/gallery
+    output: false
+    name: Photo Gallery
+    icon: image
+    create:
+      path: images/gallery/{title|slugify}.jpg
+
+uploads_dir: images
+
+_inputs:
+  title:
+    label: Title
+  date:
+    label: Date
+    type: date
+  category:
+    label: Category
+    type: select
+    options:
+      values:
+        - Criminal Law
+        - Civil Litigation
+        - Corporate & Commercial
+        - Employment Law
+        - Family & Probate
+        - Tax Law
+        - Intellectual Property
+        - General
+  summary:
+    label: Summary
+    type: textarea
+  image:
+    label: Photo
+    type: image
+  caption:
+    label: Caption
+  content:
+    label: Article Content
+    type: markdown
